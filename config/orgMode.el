@@ -7,7 +7,9 @@
 (global-set-key "\C-cb" 'org-iswitchb) ;;切换buffer
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
-;;(add-hook 'org-mode-hook 'linum-mode)
+
+;;org-mode下关闭左侧的行号显示
+(add-hook 'org-mode-hook (lambda () (global-linum-mode 0)))
 
 ;; 当所有的子结束的时候，自动将父置为结束
 (defun org-summary-todo (n-done n-not-done)
