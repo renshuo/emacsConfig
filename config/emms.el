@@ -54,9 +54,9 @@
 		(myear (emms-track-get track 'info-year))
 		)
     (cond
-	 (nil
+	 ((or title artist album) 
         (format 
-         "%-50s %20s | %-30s %2s:%-2s %-4s |> %10s"
+         "%-65s  %40s | %-70s  %2s:%-2s  %-6s "
          (if title
 			 title 
 		   (progn
@@ -68,8 +68,8 @@
 			  (string-match "\\..*$" simple-title)
 			  ))
 		   )
-;;			 (concat (number-to-string (length file-main-name))
-;;					 file-main-name)
+			 (concat (number-to-string (length file-main-name))
+					 file-main-name)
 			 ))
          (if artist artist "") 
          (if album album "")
@@ -80,12 +80,12 @@
 					 )
 		   "00")
 		 (if (and myear (> (string-to-number myear) 0)) myear "")
-		 (emms-track-simple-description track)
+;;		 (emms-track-simple-description track)
 		 ))
 	 (t
-	  (format "%-80s" track))
-	 )
-;;	  (emms-track-simple-description track)))
+;	  (format "%-80s" track))
+;	 )
+	  (emms-track-simple-description track)))
 ))
 (setq emms-track-description-function 'my-emms-track-desc)
 ;;(setq emms-track-description-function 'emms-info-track-description)
@@ -128,23 +128,7 @@
 ;;		(emms-stop))))
 
 
-;; 用mplayer替代mpg123
-;;(setq emms-player-mplayer-command-name "mplayer"
-;;emms-player-mplayer-parameters '("-slave")
-;;emms-player-mpg321-command-name "mpg123"
-;;emms-player-list
-;;'(emms-player-mplayer
-;;emms-player-mplayer-playlist
-;;emms-player-mpg321
-;;emms-player-ogg123))
-
-;;(defun ddliu-emms-player-mplayer-volume-up ()
-;;"Depends on mplayer’s -slave mode."
-;;(interactive) 
-;;(process-send-string
-;;emms-player-simple-process-name "volume 1\n"))
+;;(emms-playlist-mode-go)
+;;(emms-add-directory-tree "/home/backup/music/")
 
 
-
-(emms-playlist-mode-go)
-(emms-add-directory-tree "/home/backup/music/")

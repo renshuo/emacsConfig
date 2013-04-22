@@ -16,25 +16,37 @@
       'mew-draft-kill
       'mew-send-hook))
 
-;; set my name and email
-(setq mew-name "sren") ;; (user-full-name)
-(setq mew-user "renshs@gmail.com") ;; (user-login-name)
-(setq mew-mail-domain "mail.google.com")
+
+(setq mew-config-alist
+      '(
+        ;; Default fetch mailbox is IMAP
+        (default
+         (mailbox-type          imap)
+         (proto                 "%")
+         (imap-server           "imap.gmail.com")
+         (imap-user             "renshs")
+		 (imap-ssl              t)
+		 (imap-ssl-port         "993")
+         (name                  "sren")
+         (user                  "renshs")
+		 (imap-auth             "031138ner")
+  ;       (mail-domain           "gmail.com")
+;         (imap-size             0)
+;         (imap-delete           t)
+;         (imap-queue-folder     "%queue")
+ ;        (imap-trash-folder     "%Trash") ;; This must be in concile with your IMAP box setup
+  ;       (smtp-auth-list        ("PLAIN" "LOGIN" "CRAM-MD5")) 
+  ;       (smtp-user             "renshs@gmail.com")
+  ;       (smtp-server           "smtp.gmail.com")
+ 
+        )))
 
 
-;;
-(setq mew-smtp-server "smpt.gmail.com")  ;; if not localhost
 
 
-;; To use local mailbox "mbox" or "maildir" instead of POP
-(setq mew-mailbox-type 'maildir)
-(setq mew-mbox-command "incm")
-(setq mew-mbox-command-arg "-u -d ~/.mail")
-;; If /path/to/mbox is a file, it means "mbox".
-;; If /path/to/mbox is a directory, it means "maildir".
 
+;;(setq mew-use-cached-passwd t)
 
-(setq mew-use-cached-passwd t)
+;;(setq mew-use-master-passwd t)
 
-(setq mew-use-master-passwd t)
-
+;;(mew)
