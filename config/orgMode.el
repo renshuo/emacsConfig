@@ -24,9 +24,8 @@
 
 ;;将newgtd.org加入到agendar的文件列表，这个可以使agendar能够查询到newgtd.org文件中的内容,否则，在agendar将看不到newgtd.org的内容
 (setq org-agenda-files (
-		quote ("/home/backup/.scrapbook/emacs_org/diary.org" 
-			"/home/backup/.scrapbook/emacs_org/work.org"
-			"/home/backup/.scrapbook/emacs_org/life.org")))
+		quote ("/home/backup/Dropbox/note/emacs-org/diary.org" 
+			"/home/backup/Dropbox/note/emacs-org/work.org")))
 
 
 

@@ -1,4 +1,4 @@
-;; yas config for python
+;; yas config
 (require 'yasnippet)
 (yas/initialize)
 ;;(yas/load-directory "../snippets")

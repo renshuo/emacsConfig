@@ -1,7 +1,7 @@
 ;; ac complete config for python
-;;(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1/")
+;;(add-to-list 'load-path (concat emacs-plugin-dir "auto-complete-1.3.1/"))
 (require 'auto-complete)
-;;(add-to-list 'ac-dictionary-directories "./auto-complete-1.3.1/dict")
+(add-to-list 'ac-dictionary-directories "./auto-complete-1.3.1/dict")
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
 

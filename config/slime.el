@@ -1,5 +1,9 @@
+(require 'slime-autoloads)
+
+;;(require 'slime)
+
 (setq inferior-lisp-program "/usr/bin/clisp")
-(add-to-list 'load-path
-(require 'slime)
+(setq slime-contribs '(slime-fancy))
+
 (slime-setup)
-;;(require 'slime-autoloads)
+
