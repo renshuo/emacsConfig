@@ -27,7 +27,7 @@ values."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '("~/emacsren.d/layers")
+   dotspacemacs-configuration-layer-path '("~/.emacsren.d/layers")
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
@@ -52,7 +52,10 @@ values."
      shell-scripts
      sql
      yaml
-
+     mu4e
+     gnus
+     ;;smtpmail
+     
      games
      org
      chinese
@@ -152,7 +155,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
+                               :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -322,6 +325,51 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+    ;; Set up some common mu4e variables
+    (setq mu4e-maildir "~/mail"
+          mu4e-drafts-folder "/Drafts"
+          mu4e-sent-folder   "/Sent"
+          ;; mu4e-refile-folder "/Archive"
+          mu4e-trash-folder "/Trash"
+          mu4e-get-mail-command "offlineimap"
+          mu4e-update-interval 300
+          mu4e-compose-signature-auto-include nil
+          mu4e-view-show-images t
+          mu4e-view-show-addresses t)
+    ;;; Mail directory shortcuts
+    (setq mu4e-maildir-shortcuts
+          '(("/INBOX" . ?i)
+            ("/Sent" . ?s)
+            ;; ("/Junk" . ?j)
+            ("/Trash" . ?t)
+            ))
+      
+    ;; (setq mu4e-get-mail-command "offlineimap")  
+      
+    ;; something about ourselves  
+    (setq user-mail-address "sren@yg.com"  
+          user-full-name  "sren"  
+          mu4e-compose-signature  
+          (concat  "sren@yg.com\n")  
+          mu4e-compose-signature-auto-include t  
+          )  
+
+    ;;send mail
+    (require 'smtpmail)  
+    (setq message-send-mail-function 'smtpmail-send-it
+          ;; smtpmail-stream-type 'starttls
+          smtpmail-default-smtp-server "smtp.yg.com"
+          smtpmail-smtp-server "smtp.yg.com"  
+          smtpmail-smtp-service 25)
+
+    ;; (setq mu4e-view-show-images t)  
+
+    ;; save attachment to my desktop (this can also be a function)  
+    (setq mu4e-attachment-dir "~/Downloads")  
+
+    ;; notifcation  
+    (setq mu4e-enable-notifications t)  
+    (mu4e-alert-enable-mode-line-display)  
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -333,7 +381,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (auctex-latexmk spray slime-company mwim helm-company helm-c-yasnippet flyspell-correct-helm flyspell-correct company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help markdown-mode smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor org-projectile org-present ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-pomodoro org-plus-contrib org-download org-bullets org open-junk-file neotree move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (winum unfill sudoku restclient-helm ob-restclient fuzzy company-restclient know-your-http-well mu4e-maildirs-extension mu4e-alert powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight f diminish s bind-map bind-key dash ace-pinyin helm avy helm-core async popup package-build typit sass-mode pdf-tools pacmacs alert log4e magit-gh-pulls livid-mode skewer-mode json-mode js2-refactor multiple-cursors github-search github-clone gist gh marshal logito pcache find-by-pinyin-dired company-web web-completion-data company-tern tern company-shell company-emacs-eclim eclim company-c-headers company-auctex chinese-pyim chinese-pyim-basedict yaml-mode web-mode web-beautify mmt tagedit sql-indent slim-mode scss-mode restclient pug-mode tablist pangu-spacing dash-functional gntp ob-http simple-httpd less-css-mode json-snatcher json-reformat js2-mode js-doc insert-shebang helm-css-scss haml-mode github-browse-file ht fish-mode pinyinlib emmet-mode disaster csv-mode coffee-mode cmake-mode clang-format pos-tip packed auctex ace-jump-mode 2048-game spray slime-company mwim helm-company helm-c-yasnippet flyspell-correct-helm flyspell-correct company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help markdown-mode smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor org-projectile org-present ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-pomodoro org-plus-contrib org-download org-bullets org open-junk-file neotree move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
