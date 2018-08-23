@@ -1,27 +1,16 @@
 ;; srenconfig
 
-;; recent file, set key for recentf-open-file
-(global-set-key "\C-x\ \C-r" 'recentf-open-files)
-
-;; tab width/indent
-(setq default-tab-width 2)
-(setq indent-tabs-mode nil
-      js-indent-level 2)
-(setq indent-tabs-mode nil
-      css-indent-level 2)
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
-(setq web-mode-attr-indent-offset 2)
-
 ;; menu
 (menu-bar-mode t)
+
+;; recent file, set key for recentf-open-file
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 ;; line number
 (setq-default dotspacemacs-line-numbers 'relative)
 
 ;;; 闪烁光标
-(setq blink-cursor-mode t)
+(blink-cursor-mode t)
 
 ;; todo
 ;;; 设置光标为竖线（未生效）
@@ -40,11 +29,11 @@
       scroll-conservatively 10000)
 
 
-;;标题栏显示 ;; %f 缓冲区完整路径 
+;;标题栏显示 ;; %f 缓冲区完整路径
 (setq frame-title-format "%f")
 
 ;; org-mode export markdown
-(setq org-export-backends (quote (ascii html icalendar latex md)))
+(setq org-export-backends '(ascii html icalendar latex md))
 
 
 ;; 有道词典key绑定
