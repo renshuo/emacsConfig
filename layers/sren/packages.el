@@ -29,10 +29,10 @@
 
 ;;; Code:
 
-(defun srenconfig/init-srenconfig ()
+(defun sren/init-sren ()
   )
 
-(defconst srenconfig-packages
+(defconst sren-packages
   '()
   "The list of Lisp packages required by the srenconfig layer.
 

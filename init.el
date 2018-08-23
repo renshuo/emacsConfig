@@ -13,7 +13,7 @@ values."
    dotspacemacs-distribution 'spacemacs
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
-   ;; and `nil'. `unused' will lazy install only unused layers (i.e. layetail -f /var/log/emerge-fetch.logrs
+   ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
    ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
    ;; lazy install any layer that support lazy installation even the layers
    ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
@@ -27,7 +27,8 @@ values."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '("~/.emacsren.d/layers")
+   dotspacemacs-configuration-layer-path '(
+                                           )
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
@@ -36,41 +37,53 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
-     auto-completion
-     better-defaults
 
-     c-c++
-     ;;common-lisp
+     helm
+     ;; auto-completion
+     (better-defaults :variables
+                      better-defaults-move-to-beginning-of-code-first t
+                      better-defaults-move-to-end-of-code-first nil
+                      )
+
+     (chinese :variables
+              chinese-enable-fcitx t
+              chinese-enable-youdao-dict t
+              )
+
+     (chrome) ;; TODO
+     (colors :variables
+             colors-colorize-identifiers 'all
+             colors-enable-nyan-cat-progress-bar t
+            )
      csv
+     docker
      emacs-lisp
-     html
-     java
-     javascript
-     latex
-     markdown
-     shell-scripts
-     sql
-     yaml
-     mu4e
-     gnus
-     ;;smtpmail
-     
-     games
-     org
-     chinese
      git
-     github
-     pdf-tools
-     restclient
+     graphviz
+     html
+     ibuffer
+     imenu-list
+     (javascript :variables ;; TODO
+                 )
+     latex
+     markdown ;; TODO
+     org ;; TODO
+     pandoc
+     pdf-tools ;; TODO
      (shell :variables
+            shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
-     speed-reading
-     srenconfig
+
+     python
+     shell-scripts
+     sql
+     themes-megapack
+     yaml
+     ;; spell-checking
      ;; syntax-checking
      ;; version-control
+     sren
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -268,8 +281,18 @@ values."
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
-   ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
-   ;; derivatives. If set to `relative', also turns on relative line numbers.
+   ;; Control line numbers activation.
+   ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
+   ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
+   ;; This variable can also be set to a property list for finer control:
+   ;; '(:relative nil
+   ;;   :disabled-for-modes dired-mode
+   ;;                       doc-view-mode
+   ;;                       markdown-mode
+   ;;                       org-mode
+   ;;                       pdf-view-mode
+   ;;                       text-mode
+   ;;   :size-limit-kb 1000)
    ;; (default nil)
    dotspacemacs-line-numbers nil
    ;; Code folding method. Possible values are `evil' and `origami'.
@@ -306,17 +329,17 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-          ("org-cn"   . "http://elpa.emacs-china.org/org/")
-          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
 executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  )
+  (setq configuration-layer--elpa-archives
+        '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+          ("org-cn"   . "http://elpa.emacs-china.org/org/")
+          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+)
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -325,51 +348,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-    ;; Set up some common mu4e variables
-    (setq mu4e-maildir "~/mail"
-          mu4e-drafts-folder "/Drafts"
-          mu4e-sent-folder   "/Sent"
-          ;; mu4e-refile-folder "/Archive"
-          mu4e-trash-folder "/Trash"
-          mu4e-get-mail-command "offlineimap"
-          mu4e-update-interval 300
-          mu4e-compose-signature-auto-include nil
-          mu4e-view-show-images t
-          mu4e-view-show-addresses t)
-    ;;; Mail directory shortcuts
-    (setq mu4e-maildir-shortcuts
-          '(("/INBOX" . ?i)
-            ("/Sent" . ?s)
-            ;; ("/Junk" . ?j)
-            ("/Trash" . ?t)
-            ))
-      
-    ;; (setq mu4e-get-mail-command "offlineimap")  
-      
-    ;; something about ourselves  
-    (setq user-mail-address "sren@yg.com"  
-          user-full-name  "sren"  
-          mu4e-compose-signature  
-          (concat  "sren@yg.com\n")  
-          mu4e-compose-signature-auto-include t  
-          )  
-
-    ;;send mail
-    (require 'smtpmail)  
-    (setq message-send-mail-function 'smtpmail-send-it
-          ;; smtpmail-stream-type 'starttls
-          smtpmail-default-smtp-server "smtp.yg.com"
-          smtpmail-smtp-server "smtp.yg.com"  
-          smtpmail-smtp-service 25)
-
-    ;; (setq mu4e-view-show-images t)  
-
-    ;; save attachment to my desktop (this can also be a function)  
-    (setq mu4e-attachment-dir "~/Downloads")  
-
-    ;; notifcation  
-    (setq mu4e-enable-notifications t)  
-    (mu4e-alert-enable-mode-line-display)  
+  '(tool-bar-mode nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -381,7 +360,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (winum unfill sudoku restclient-helm ob-restclient fuzzy company-restclient know-your-http-well mu4e-maildirs-extension mu4e-alert powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight f diminish s bind-map bind-key dash ace-pinyin helm avy helm-core async popup package-build typit sass-mode pdf-tools pacmacs alert log4e magit-gh-pulls livid-mode skewer-mode json-mode js2-refactor multiple-cursors github-search github-clone gist gh marshal logito pcache find-by-pinyin-dired company-web web-completion-data company-tern tern company-shell company-emacs-eclim eclim company-c-headers company-auctex chinese-pyim chinese-pyim-basedict yaml-mode web-mode web-beautify mmt tagedit sql-indent slim-mode scss-mode restclient pug-mode tablist pangu-spacing dash-functional gntp ob-http simple-httpd less-css-mode json-snatcher json-reformat js2-mode js-doc insert-shebang helm-css-scss haml-mode github-browse-file ht fish-mode pinyinlib emmet-mode disaster csv-mode coffee-mode cmake-mode clang-format pos-tip packed auctex ace-jump-mode 2048-game spray slime-company mwim helm-company helm-c-yasnippet flyspell-correct-helm flyspell-correct company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help markdown-mode smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor org-projectile org-present ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-pomodoro org-plus-contrib org-download org-bullets org open-junk-file neotree move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (spray yapfify pyvenv pytest pyenv-mode py-isort pip-requirements pandoc-mode ox-pandoc ht live-py-mode hy-mode dash-functional helm-pydoc cython-mode csv-mode anaconda-mode pythonic insert-shebang fish-mode zenburn-theme zen-and-art-theme yaml-mode white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme sql-indent spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme xterm-color web-beautify shell-pop pdf-tools org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download multi-term mmm-mode markdown-toc livid-mode skewer-mode simple-httpd js2-refactor yasnippet multiple-cursors js2-mode js-doc htmlize gnuplot gh-md eshell-z eshell-prompt-extras esh-help coffee-mode imenu-list ibuffer-projectile web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode graphviz-dot-mode emoji-cheat-sheet-plus dockerfile-mode docker json-mode tablist docker-tramp json-snatcher json-reformat rainbow-mode rainbow-identifiers color-identifiers-mode gmail-message-mode ham-mode markdown-mode html-to-markdown flymd edit-server youdao-dictionary names chinese-word-at-point pos-tip fcitx unfill mwim auctex-latexmk auctex smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub async with-editor dash ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
