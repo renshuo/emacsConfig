@@ -39,3 +39,15 @@
 ;; 有道词典key绑定
 (spacemacs/set-leader-keys "o y" 'youdao-dictionary-search-at-point+)
 
+
+
+;; latex
+;; (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+(add-hook 'LaTeX-mode-hook
+          (lambda()
+            (setq TeX-engine 'xetex
+                  Tex-global-PDF-mode t)
+            (setq TeX-save-query nil )
+            (setq TeX-show-compilation nil) ;; 不显示编译窗口
+            (setq TeX-PDF-mode t)))
+
