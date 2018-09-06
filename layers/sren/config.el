@@ -36,12 +36,15 @@
 (setq org-export-backends '(ascii html icalendar latex md))
 
 
+;; ------------------------------ chinese
 ;; 有道词典key绑定
 (spacemacs/set-leader-keys "o y" 'youdao-dictionary-search-at-point+)
 
+;;(spacemacs/set-monospaced-font "Source Code Pro" "WenQuanYi Bitmap Song" 14 16)
 
 
-;; latex
+
+;; ------------------------------ latex
 ;; (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 (add-hook 'LaTeX-mode-hook
           (lambda()
