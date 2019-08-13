@@ -34,7 +34,7 @@
     lsp-vue
     lsp-mode
     company-lsp
-    company-quickhelp
+    ;;company-quickhelp
     web-mode
     )
   )

@@ -1,8 +1,8 @@
-;;; packages.el --- srenconfig layer packages file for Spacemacs.
+;;; packages.el --- sren layer packages file for Spacemacs.
 ;;
-;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
+;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
-;; Author:  <sren@sren-gentoo>
+;; Author: sren <sren@sren-work>
 ;; URL: https://github.com/syl20bnr/spacemacs
 ;;
 ;; This file is not part of GNU Emacs.
@@ -18,23 +18,22 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `srenconfig-packages'. Then, for each package PACKAGE:
+;; added to `sren-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `srenconfig/init-PACKAGE' to load and initialize the package.
+;;   function `sren/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `srenconfig/pre-init-PACKAGE' and/or
-;;   `srenconfig/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `sren/pre-init-PACKAGE' and/or
+;;   `sren/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
-
 (defun sren/init-sren ()
   )
 
 (defconst sren-packages
   '()
-  "The list of Lisp packages required by the srenconfig layer.
+  "The list of Lisp packages required by the sren layer.
 
 Each entry is either:
 
