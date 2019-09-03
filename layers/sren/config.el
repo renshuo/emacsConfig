@@ -75,7 +75,7 @@
   (setq org-publish-project-alist
         '(
           ("blog-notes"
-           :org-publish-use-timestamps-flag t
+           :org-publish-use-timestamps-flag nil
            :base-directory "/home/work/coding/blog/notes"
            :base-extension "org\\|md"
            :publishing-directory "/home/work/coding/blog/public_html/"
@@ -91,6 +91,8 @@
            :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
            :sitemap-sort-files anti-chronologically
            :sitemap-file-entry-format "%d %t"
+           :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/blog/public_html/theme/css/worg.css\"/>
+                       <link rel=\"stylesheet\" type=\"text/css\" href=\"theme/css/worg.css\"/>"
            )
           ("blog-static"
            :base-directory "/home/work/coding/blog/notes"
@@ -99,8 +101,17 @@
            :recursive t
            :publishing-function org-publish-attachment
            )
+          ("blog-theme"
+           :base-directory "/home/work/coding/blog/theme/"
+           :base-extension "css\\|js\\|png\\|jpg\\|gif"
+           :publishing-directory "/home/work/coding/blog/public_html/theme/"
+           :recursive t
+           :publishing-function org-publish-attachment
+           )
 
-          ("blog" :components ("blog-notes" "blog-static"))
+          ("blog"
+           :components ("blog-notes" "blog-static" "blog-theme")
+           )
           )
         )
   )
