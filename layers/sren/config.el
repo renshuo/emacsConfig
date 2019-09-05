@@ -92,8 +92,9 @@
            :sitemap-sort-files anti-chronologically
            :sitemap-file-entry-format "%d %t"
            :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/blog/public_html/theme/css/worg.css\"/>
-                       <link rel=\"stylesheet\" type=\"text/css\" href=\"theme/css/worg.css\"/>"
-           )
+                       <link rel=\"stylesheet\" type=\"text/css\" href=\"/gitPage/public_html/theme/css/worg.css\"/>
+                       <link rel=\"stylesheet\" type=\"text/css\" href=\"theme/css/worg.css\"/>
+                      ")
           ("blog-static"
            :base-directory "/home/work/coding/blog/notes"
            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
@@ -115,5 +116,6 @@
           )
         )
   )
+
 
 
