@@ -1,10 +1,8 @@
-;; srenconfig
-
 ;; menu
 (menu-bar-mode t)
 
 ;; recent file, set key for recentf-open-file
-(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+;; (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 ;; line number
 (setq-default dotspacemacs-line-numbers 'relative)
@@ -32,10 +30,6 @@
 ;;标题栏显示 ;; %f 缓冲区完整路径
 (setq frame-title-format "%f")
 
-;; org-mode export markdown
-(setq org-export-backends '(ascii html icalendar latex md))
-
-
 ;; ------------------------------ chinese
 ;; 有道词典key绑定
 (spacemacs/set-leader-keys "o y" 'youdao-dictionary-search-at-point+)
@@ -59,6 +53,7 @@
 
 
 
+;; ----------------------------- org-mode
 ;; org-mode code runner
 ;; (org-babel-do-load-languages
 ;;  'org-babel-load-languages
@@ -68,6 +63,8 @@
 ;;    )
 ;;  )
 
+;; org-mode export markdown
+(setq org-export-backends '(html icalendar latex md))
 
 ;; config for org-mode to blog
 (with-eval-after-load 'org
