@@ -73,6 +73,7 @@ values."
                  )
      latex
      markdown ;; TODO
+     mu4e
      org ;; TODO
      pdf-tools ;; TODO
      (shell :variables
@@ -356,6 +357,30 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   '(tool-bar-mode nil)
+
+  (setq mu4e-maildir "~/.mail/qqmail/"
+        mu4e-sent-folder "/Sent Messages"
+        mu4e-drafts-folder "/Drafts"
+        mu4e-trash-folder "/Deleted Messages"
+        mu4e-refile-folder "/Archive"
+        mu4e-get-mail-command "mbsync -a"
+        mu4e-update-interval nil
+        mu4e-compose-signature-auto-include nil
+        mu4e-view-show-images t
+        mu4e-view-show-addresses t
+
+        user-mail-address "renshuoo@qq.com"
+        user-full-name "Ren Shuo"
+
+        message-send-mail-function 'smtpmail-send-it
+        smtpmail-stream-type 'starttls
+        smtpmail-default-smtp-server "smtp.qq.com"
+        smtpmail-smtp-server "smtp.qq.com"
+        smtpmail-smtp-service 587
+        )
+
+  (setq mu4e-enable-notifications t)
+
   ;; (spacemacs/set-monospaced-font "Source Code Pro" "微软雅黑" 14 16)
   (dolist (charset '(kana han cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font) charset
@@ -371,7 +396,10 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (pyim pyim-basedict pangu-spacing find-by-pinyin-dired helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern company-statistics company-shell company-go company-auctex company-anaconda auto-yasnippet ac-ispell auto-complete go-guru go-eldoc go-mode tide typescript-mode flycheck tern lsp-vue company-quickhelp company-lsp company lsp-mode spray yapfify pyvenv pytest pyenv-mode py-isort pip-requirements pandoc-mode ox-pandoc ht live-py-mode hy-mode dash-functional helm-pydoc cython-mode csv-mode anaconda-mode pythonic insert-shebang fish-mode zenburn-theme zen-and-art-theme yaml-mode white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme sql-indent spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme xterm-color web-beautify shell-pop pdf-tools org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download multi-term mmm-mode markdown-toc livid-mode skewer-mode simple-httpd js2-refactor yasnippet multiple-cursors js2-mode js-doc htmlize gnuplot gh-md eshell-z eshell-prompt-extras esh-help coffee-mode imenu-list ibuffer-projectile web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode graphviz-dot-mode emoji-cheat-sheet-plus dockerfile-mode docker json-mode tablist docker-tramp json-snatcher json-reformat rainbow-mode rainbow-identifiers color-identifiers-mode gmail-message-mode ham-mode markdown-mode html-to-markdown flymd edit-server youdao-dictionary names chinese-word-at-point pos-tip fcitx unfill mwim auctex-latexmk auctex smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub async with-editor dash ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (mu4e-maildirs-extension mu4e-alert pyim pyim-basedict pangu-spacing find-by-pinyin-dired helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern company-statistics company-shell company-go company-auctex company-anaconda auto-yasnippet ac-ispell auto-complete go-guru go-eldoc go-mode tide typescript-mode flycheck tern lsp-vue company-quickhelp company-lsp company lsp-mode spray yapfify pyvenv pytest pyenv-mode py-isort pip-requirements pandoc-mode ox-pandoc ht live-py-mode hy-mode dash-functional helm-pydoc cython-mode csv-mode anaconda-mode pythonic insert-shebang fish-mode zenburn-theme zen-and-art-theme yaml-mode white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme sql-indent spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme xterm-color web-beautify shell-pop pdf-tools org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download multi-term mmm-mode markdown-toc livid-mode skewer-mode simple-httpd js2-refactor yasnippet multiple-cursors js2-mode js-doc htmlize gnuplot gh-md eshell-z eshell-prompt-extras esh-help coffee-mode imenu-list ibuffer-projectile web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode graphviz-dot-mode emoji-cheat-sheet-plus dockerfile-mode docker json-mode tablist docker-tramp json-snatcher json-reformat rainbow-mode rainbow-identifiers color-identifiers-mode gmail-message-mode ham-mode markdown-mode html-to-markdown flymd edit-server youdao-dictionary names chinese-word-at-point pos-tip fcitx unfill mwim auctex-latexmk auctex smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub async with-editor dash ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+ '(send-mail-function (quote smtpmail-send-it))
+ '(smtpmail-smtp-server "smtp.qq.com")
+ '(smtpmail-smtp-service 25))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
