@@ -1,0 +1,1 @@
+/home/bin/0bin/isync.sh
