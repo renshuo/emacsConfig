@@ -21,6 +21,7 @@
       message-send-mail-function 'smtpmail-send-it
       smtpmail-stream-type 'starttls
       smtpmail-default-smtp-server "smtp.qq.com"
+      smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg")
       smtpmail-smtp-server "smtp.qq.com"
       smtpmail-smtp-service 587
       )
