@@ -37,7 +37,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-
+     auto-completion
      helm
      ;; auto-completion
      (better-defaults :variables
@@ -362,9 +362,9 @@ you should place your code here."
     (set-fontset-font (frame-parameter nil 'font)
                       charset (font-spec :family "思源黑体 CN" :size 16)))
 
-  (load "~/emacsren.d/tools/load-directory.el")
-  (require 'load-directory)
-  (load-directory "~/emacsren.d/cfg")
+  ;; (load "~/emacsren.d/tools/load-directory.el")
+  ;; (require 'load-directory)
+  (load-directory "~/emacsren.d/userCfg")
 )
 
 
