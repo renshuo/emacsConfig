@@ -358,9 +358,9 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   ;; (spacemacs/set-monospaced-font "Source Code Pro" "微软雅黑" 14 16)
-  (dolist (charset '(kana han cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font) charset
-                      (font-spec :family "微软雅黑" :size 16)))
+  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font)
+                      charset (font-spec :family "思源黑体 CN" :size 16)))
 
   (load "~/emacsren.d/tools/load-directory.el")
   (require 'load-directory)
