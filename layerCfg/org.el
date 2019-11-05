@@ -1,15 +1,25 @@
 ;; ----------------------------- org-mode common
-(setq myorgdir "~/myOrgTask/")
 
 ;; agender file
-(setq org-agenda-files (quote ("~/myOrgTask/work")))
-
+(setq org-agenda-files (quote ("~/task/work")))
 
 ;; org-mode export markdown
 (setq org-export-backends '(html icalendar latex md))
 
-;; ---------------------------- org for task
+;; table fonts
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-table ((t (
+                  ;; :foreground "#6c71c4"
+                  :family "Source Code Pro"))))
+ )
+
+;; ---------------------------- org for task
+(setq myorgdir "~/task/")
 ;; capture
 (setq org-capture-templates
       (quote (
