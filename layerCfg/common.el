@@ -1,5 +1,10 @@
 ;; --------------- common app key binding
 
+;; for all email client use
+(setq user-mail-address "renshs@aliyun.com")
+(setq user-full-name "Ren Shuo")
+
+
 (global-set-key (kbd "C-c t")
                 '(lambda ()
                    (interactive)
