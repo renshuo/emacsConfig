@@ -4,21 +4,6 @@
 (setq user-mail-address "renshs@aliyun.com")
 (setq user-full-name "Ren Shuo")
 
-
-(global-set-key (kbd "C-c t")
-                '(lambda ()
-                   (interactive)
-                   (find-file "~/myOrgTask/work/work.org")
-                   ))
-(global-set-key (kbd "C-c b")
-                '(lambda ()
-                   (interactive)
-                   (find-file "~/blog/notes/index.org")
-                   ))
-
-
-
-
 ;; menu
 (menu-bar-mode t)
 
