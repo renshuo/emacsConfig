@@ -1,28 +1,16 @@
 ;; common
 (setq elmo-maildir-folder-path "~/.Maildir/")
 (setq elmo-localdir-folder-path "~/.Mail/")
-;; smtp
-;; (setq wl-smtp-connection-type 'starttls
-;;       wl-smtp-posting-port 25
-;;       wl-smtp-authenticate-type "plain"
-;;       wl-smtp-posting-user "renshs@aliyun.com"
-;;       wl-smtp-posting-server "smtp.aliyun.com"
-;;       wl-local-domain "aliyun.com"
-;;       wl-message-id-domain "smtp.aliyun.com"
-;;       )
 
-;; (setq wl-smtp-connection-type 'starttls
-;;       wl-smtp-posting-port 587
-;;       wl-smtp-authenticate-type "plain"
-;;       wl-smtp-posting-user "renshuoo"
-;;       wl-smtp-posting-server "smtp.qq.com"
-;;       wl-local-domain "qq.com"
-;;       wl-message-id-domain "smtp.qq.com"
-;;       )
+;; 定制summary界面的行格式
+(setq wl-summary-line-format
+      "%n %T%P %Y-%M-%D(%W) %h:%m | %t%17(%c %f%) | %s")
 
 ;; multi smtp user
 (setq wl-user-mail-address-list (quote ("renshs@aliyun.com" "renshuoo@qq.com")))
 
+
+;; 邮件的发件信息 C-c C-j , 用 n,p 选择
 (setq wl-draft-config-alist
       '(((string-match "aliyun" wl-draft-parent-folder)
          (template . "aliyun"))
@@ -35,7 +23,6 @@
                (template . "qq"))
          )
       )
-
 (setq wl-template-alist
       '(("aliyun"
          ("From" . "renshs@aliyun.com")
@@ -59,3 +46,18 @@
          (wl-message-id-domain . "smtp.qq.com"))
         )
       )
+
+
+;; 去掉邮件头中的一些不重要信息
+(setq wl-message-ignored-field-list
+      '(".")
+      wl-message-visible-field-list
+      '("^\\(To\\|Cc\\):"
+        "^Subject:"
+        "^\\(From\\|Reply-To\\):"
+        "^\\(Posted\\|Date\\):"
+        "^Organization:"
+        "^X-\\(Face\\(-[0-9]+\\)?\\|Weather\\|Fortune\\|Now-Playing\\):")
+      wl-message-sort-field-list
+      (append wl-message-sort-field-list
+              '("^Reply-To" "^Posted" "^Date" "^Organization")))
