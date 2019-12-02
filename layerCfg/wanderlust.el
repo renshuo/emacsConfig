@@ -2,9 +2,16 @@
 (setq elmo-maildir-folder-path "~/.Maildir/")
 (setq elmo-localdir-folder-path "~/.Mail/")
 
+(add-hook 'wl-summary-mode-hook
+          `(lambda ()
+             (pangu-spacing-mode -1)
+             )
+          )
+
 ;; 定制summary界面的行格式
 (setq wl-summary-line-format
-      "%n %T%P %Y-%M-%D(%W) %h:%m | %t%17(%c %f%) | %s")
+      "%T %n %P %Y-%M-%D(%W) %h:%m | %t%25(%c %f%) | %s")
+(setq wl-summary-width 160)
 
 ;; multi smtp user
 (setq wl-user-mail-address-list (quote ("renshs@aliyun.com" "renshuoo@qq.com")))
