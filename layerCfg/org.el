@@ -45,7 +45,7 @@
   (setq org-publish-project-alist
         '(
           ("blog-notes"
-           :org-publish-use-timestamps-flag nil
+           :org-publish-use-timestamps-flag f
            ;; :base-directory blognotedir
            :base-directory "~/blog/notes"
            :base-extension "org\\|md"
