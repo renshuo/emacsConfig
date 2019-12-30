@@ -31,51 +31,14 @@
 
 (setq myvue-packages
   '(
-    lsp-vue
-    lsp-mode
-    company-lsp
-    ;;company-quickhelp
-    web-mode
+    vue-mode
     )
   )
-(defun myvue/init-lsp-vue ()
-  (use-package lsp-vue :ensure)
-  )
-
-(defun myvue/init-lsp-mode ()
-  (use-package lsp-mode :ensure)
-  )
-
-(defun myvue/init-company-quickhelp ()
-  (use-package company-quickhelp :ensure)
+(setq vue-mode-excluded-packages '())
+(defun myvue/init-vue-mode ()
+  (use-package vue-mode :ensure)
   )
 
 
-(defun myvue/init-company-lsp ()
-  (use-package company-lsp
-    :ensure
-    :config
-    (setq company-lsp-enable-snippet t))
-  (use-package company
-    :ensure
-    :config
-    (setq company-minimum-prefix-length 1)
-    (setq company-dabbrev-downcase nil)
-    (setq company-idle-delay 0.5)
-    (add-hook 'company-mode-hook 'comany-quickhelp-mode)
-    (add-to-list 'company-backends 'company-lsp)
-    )
-  )
 
-(defun myvue/post-init-web-mode ()
-  (use-package web-mode
-    :ensure
-    :init
-    (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
-    :config
-    (add-hook 'web-mode-hook 'company-mode)
-    (add-hook 'web-mode-hook 'lsp-vue-enable)
-    )
-  )
 ;;; packages.el ends here
