@@ -76,10 +76,10 @@
 
 
 (setq mu4e-maildir "~/.mail/"
-      mu4e-sent-folder "/local/Sent Messages/"
-      mu4e-drafts-folder "/local/Drafts/"
-      mu4e-trash-folder "/local/Deleted Messages/"
-      mu4e-refile-folder "/local/Archive/"
+      ;; mu4e-sent-folder "/local/Sent Messages/"
+      ;; mu4e-drafts-folder "/local/Drafts/"
+      ;; mu4e-trash-folder "/local/Deleted Messages/"
+      ;; mu4e-refile-folder "/local/Archive/"
       mu4e-get-mail-command "mbsync -a"
       mu4e-update-interval nil
       mu4e-compose-signature-auto-include nil

@@ -1,0 +1,1 @@
+(provide 'vue-mode-cfg)

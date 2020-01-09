@@ -1,0 +1,1 @@
+/home/bin/centaur/.emacs.d/custom.el
