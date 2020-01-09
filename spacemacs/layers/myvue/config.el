@@ -8,7 +8,6 @@
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-attr-indent-offset 2)
 
-
 ;; 让web-mode的每行行首不会空一格
 (setq web-mode-style-padding 0)
 (setq web-mode-script-padding 0)
