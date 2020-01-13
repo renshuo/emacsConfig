@@ -56,15 +56,15 @@
 
 
 ;; 去掉邮件头中的一些不重要信息
-(setq wl-message-ignored-field-list
-      '(".")
-      wl-message-visible-field-list
-      '("^\\(To\\|Cc\\):"
-        "^Subject:"
-        "^\\(From\\|Reply-To\\):"
-        "^\\(Posted\\|Date\\):"
-        "^Organization:"
-        "^X-\\(Face\\(-[0-9]+\\)?\\|Weather\\|Fortune\\|Now-Playing\\):")
-      wl-message-sort-field-list
-      (append wl-message-sort-field-list
-              '("^Reply-To" "^Posted" "^Date" "^Organization")))
+;; (setq wl-message-ignored-field-list
+;;       '(".")
+;;       wl-message-visible-field-list
+;;       '("^\\(To\\|Cc\\):"
+;;         "^Subject:"
+;;         "^\\(From\\|Reply-To\\):"
+;;         "^\\(Posted\\|Date\\):"
+;;         "^Organization:"
+;;         "^X-\\(Face\\(-[0-9]+\\)?\\|Weather\\|Fortune\\|Now-Playing\\):")
+;;       wl-message-sort-field-list
+;;       (append wl-message-sort-field-list
+;;               '("^Reply-To" "^Posted" "^Date" "^Organization")))

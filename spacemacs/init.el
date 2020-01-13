@@ -361,12 +361,12 @@ you should place your code here."
   ;; (spacemacs/set-monospaced-font "Source Code Pro" "微软雅黑" 14 16)
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
-                      charset (font-spec :family "思源黑体 CN" :size 14)))
+                      charset (font-spec :family "思源黑体 CN" :size 16)))
 
 
   ;; (load "~/emacsren.d/tools/load-directory.el")
   ;; (require 'load-directory)
-  (load-directory "~/emacsren.d/userCfg")
+  ;; (load-directory "~/emacsren.d/userCfg")
 )
 
 

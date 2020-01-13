@@ -1,5 +1,5 @@
 ;; ------------------------------ latex
-
+(provide 'latex-cfg)
 ;; from: github...spacemacs ... latex layer
 (add-hook 'doc-view-mode-hook 'auto-revert-mode) ;; for setting "auto" preview by M-m m p
 

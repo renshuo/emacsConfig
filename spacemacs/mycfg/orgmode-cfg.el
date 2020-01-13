@@ -1,5 +1,5 @@
 ;; ----------------------------- org-mode common
-
+(provide 'orgmode-cfg)
 ;; agender file
 (setq org-agenda-files (quote ("~/task/work")))
 
@@ -8,15 +8,15 @@
 
 ;; table fonts
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-table ((t (
-                  ;; :foreground "#6c71c4"
-                  :family "Source Code Pro"))))
- )
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(org-table ((t (
+;;                   ;; :foreground "#6c71c4"
+;;                   :family "思源黑体 CN" :size 16))))
+;;  )
 
 ;; ---------------------------- org for task
 (setq myorgdir "~/task/")
@@ -87,5 +87,3 @@
           )
         )
   )
-
-

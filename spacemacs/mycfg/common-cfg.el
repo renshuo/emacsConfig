@@ -1,4 +1,5 @@
 ;; --------------- common app key binding
+(provide 'common-cfg)
 ;; for all email client use
 (setq user-mail-address "renshs@aliyun.com")
 (setq user-full-name "Ren Shuo")

@@ -1,5 +1,5 @@
 ;; mu4e common
-
+(provide 'mu4e-cfg)
 (global-set-key (kbd "C-c m") 'mu4e)
 
 ;; use 'fancy' non-ascii characters in various places in mu4e
@@ -95,9 +95,3 @@
       smtpmail-stream-type 'starttls
       smtpmail-smtp-service 587
       )
-
-
-
-
-
-
