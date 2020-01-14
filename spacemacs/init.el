@@ -177,9 +177,9 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 11
+                               :size 12
                                :weight normal
-                               :width normal
+                               :Height normal
                                :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
@@ -358,11 +358,15 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  ;; (spacemacs/set-monospaced-font "Source Code Pro" "微软雅黑" 14 16)
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font)
-                      charset (font-spec :family "思源黑体 CN" :size 16)))
-
+  ; ; (spacemacs//set-monospaced-font "Source Code Pro" "思源黑体 CN" 12 14)
+;;  (set-face-attribute 'default nil :font (format "%s:pixelsize=%d" "Source Code Pro" 20))
+  (dolist (charset '(kana han cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font) charset
+                      (font-spec :family "思源黑体 CN")))
+  (setq face-font-rescale-alist '(("宋体" . 1.2)
+                                  ("微软雅黑" . 1.2)
+                                  ("思源黑体 CN" . 1.2)
+                                  ("WenQuanYi Zen Hei" . 1.2)))
 
   ;; (load "~/emacsren.d/tools/load-directory.el")
   ;; (require 'load-directory)
@@ -441,10 +445,3 @@ you should place your code here."
  '(vc-annotate-very-old-color nil)
  '(weechat-color-list
    (unspecified "#242728" "#424748" "#F70057" "#ff0066" "#86C30D" "#63de5d" "#BEB244" "#E6DB74" "#40CAE4" "#06d8ff" "#FF61FF" "#ff8eff" "#00b2ac" "#53f2dc" "#f8fbfc" "#ffffff")))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background nil))))
- '(org-table ((t (:family "Source Code Pro")))))
