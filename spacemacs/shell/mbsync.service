@@ -4,4 +4,4 @@ Description=Mailbox synchronization service
 
 [Service]
 Type=oneshot
-ExecStart=/home/bin/emacs/emacsren.d/home/isync.sh
+ExecStart=/home/bin/emacs/emacsren.d/shell/isync.sh
