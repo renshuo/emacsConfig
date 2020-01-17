@@ -11,13 +11,13 @@
 ;; capture
 (setq org-capture-templates
       (quote (
-              ("t" "todo" entry (file (concat myorgdir "/work/work.org"))
+              ("t" "todo" entry (file (concat myorgdir "/work.org"))
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
 
-              ("n" "note" entry (file (concat myorgdir "/work/note.org"))
+              ("n" "note" entry (file (concat myorgdir "/note.org"))
                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
 
-              ("d" "diary" entry (file (concat myorgdir "/work/diary.org"))
+              ("d" "diary" entry (file (concat myorgdir "/diary.org"))
                "* %?\n%U\n" :clock-in t :clock-resume t)
               ))
       )
@@ -26,8 +26,8 @@
 
 ;; ---------------------------- org for diary and blog
 ;; config for org-mode to blog
-(setq myblogdir "~/blog/")
 ;; (setq blognotedir (concat myblogdir "/notes"))
+(setq myblogdir "~/blog")
 (with-eval-after-load 'org
   (require 'ox-publish)
   (setq org-publish-project-alist
@@ -37,7 +37,7 @@
            ;; :base-directory blognotedir
            :base-directory "~/blog/notes"
            :base-extension "org\\|md"
-           :publishing-directory (concat myblogdir "/public_html/")
+           :publishing-directory "~/blog/public_html"
            :recursive t
            :publishing-function org-html-publish-to-html
            :headline-levels 4             ; Just the default for this project.
@@ -62,9 +62,9 @@
            :publishing-function org-publish-attachment
            )
           ("blog-theme"
-           :base-directory (concat myblogdir "/theme/")
+           :base-directory "~/blog/theme/"
            :base-extension "css\\|js\\|png\\|jpg\\|gif"
-           :publishing-directory (concat myblogdir "/public_html/theme/")
+           :publishing-directory "~/blog/public_html/theme/"
            :recursive t
            :publishing-function org-publish-attachment
            )
