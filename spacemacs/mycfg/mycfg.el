@@ -6,3 +6,4 @@
 (require 'typescript-cfg)
 (require 'orgmode-cfg)
 (require 'vue-cfg)
+(require 'emms-cfg)
