@@ -40,6 +40,7 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      awanderlust
      aemms
+     aemms-bilibili
      auto-completion
      helm
      ;; auto-completion

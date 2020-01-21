@@ -7,3 +7,4 @@
 (require 'orgmode-cfg)
 (require 'vue-cfg)
 (require 'emms-cfg)
+(require 'emms-bilibili-cfg)
