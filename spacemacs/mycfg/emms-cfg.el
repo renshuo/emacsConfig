@@ -14,9 +14,9 @@
 (setq emms-source-file-default-directory emms-music-dir)
 
 ;; 配置播放工具
-;; (emms-default-players)
+;;(emms-default-players)
 (setq emms-player-list
-      '(emms-player-mpv emms-player-mpg321 emms-player-ogg123 emms-player-mpv-playlist))
+      '(emms-player-mpv emms-player-mpg321 emms-player-ogg123))
 
 
 ;; 设置播放列表基本配置
@@ -25,10 +25,9 @@
 (setq emms-source-playlist-default-format 'm3u)
 (setq emms-playlist-buffer-name "*Music*")
 
-
 ;; 设置播放列表视图
 (setq formatstr " %2d | %-60s _ %30s | %-40s %2s [ %02d:%02d ]" )
-;;(format formatstr 1 "title" "sren" "album" "01:01:32")
+;;(format formatstr 1 "title" "sren" "album"  2020 3 40)
 (defun my-emms-mode-playlist-line (track)
   "format the line"
   (let* (
@@ -45,7 +44,6 @@
          (title (or (emms-track-get track 'info-title) short-name))
          )
     (format formatstr play-count title artist album trackNum time-m time-s)
-
     )
   )
 (setq emms-track-description-function 'my-emms-mode-playlist-line)

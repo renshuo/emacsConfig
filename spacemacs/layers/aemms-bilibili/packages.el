@@ -31,7 +31,6 @@
 
 (defconst aemms-bilibili-packages
   '(
-    emms
     emms-bilibili
     emms-player-simple-mpv
     )
@@ -63,8 +62,6 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-(defun aemms-bilibili/init-emms ()
-  )
 (defun aemms-bilibili/init-emms-bilibili ()
   ;;:commands (emms-bilibili)
   )
