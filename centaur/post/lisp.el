@@ -1,7 +1,7 @@
 ;; lisp entry
-(add-to-list 'load-path "~/emacsren.d/lisp/")
+(provide 'postlisp)
 
-(require 'post-cfg)
+(require 'common-cfg)
 
 (require 'vue-mode-cfg)
 

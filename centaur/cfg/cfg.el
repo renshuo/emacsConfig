@@ -1,5 +1,5 @@
 ;; common config
-(add-to-list 'load-path "~/emacsren.d/cfg/")
+(provide common)
 
 ;; (load "ts-cfg")
 ;; (load "vue-mode-cfg")
