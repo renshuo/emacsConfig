@@ -517,13 +517,6 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (dolist (charset '(kana han cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font) charset
-                      (font-spec :family "思源黑体 CN")))
-  (setq face-font-rescale-alist '(("宋体" . 1.2)
-                                  ("微软雅黑" . 1.2)
-                                  ("思源黑体 CN" . 1.2)
-                                  ("WenQuanYi Zen Hei" . 1.2)))
   (add-to-list 'load-path "~/emacsren.d/mycfg")
   (require 'mycfg)
   )

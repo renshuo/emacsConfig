@@ -1,5 +1,6 @@
 (provide 'mycfg)
 
+(require 'fontcfg)
 (require 'common-cfg)
 (require 'latex-cfg)
 ;;(require 'mu4e-cfg)
