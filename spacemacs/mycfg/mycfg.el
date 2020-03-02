@@ -9,3 +9,6 @@
 (require 'vue-cfg)
 (require 'emms-cfg)
 (require 'emms-bilibili-cfg)
+(require 'xml-cfg)
+
+
