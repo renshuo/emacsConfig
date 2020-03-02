@@ -2,6 +2,7 @@
 (setq elmo-maildir-folder-path "~/.Maildir/")
 (setq elmo-localdir-folder-path "~/.Mail/")
 
+;; 打开sumary界面时，关闭pangu功能，中英文中间不再有空格隔开
 (add-hook 'wl-summary-mode-hook
           `(lambda ()
              (pangu-spacing-mode -1)
@@ -19,7 +20,10 @@
 
 ;; 邮件的发件信息 C-c C-j , 用 n,p 选择
 (setq wl-draft-config-alist
-      '(((string-match "aliyun" wl-draft-parent-folder)
+      '(
+        ((string-match "" wl-draft-parent-folder) ;; when write mail on top of wl, use this template
+         (template . "aliyun"))
+        ((string-match "aliyun" wl-draft-parent-folder)
          (template . "aliyun"))
         ((string-match "qqMail" wl-draft-parent-folder)
          (template . "qq"))
