@@ -33,7 +33,7 @@
   (setq org-publish-project-alist
         '(
           ("blog-notes"
-           :org-publish-use-timestamps-flag f
+           :org-publish-use-timestamps-flag t
            ;; :base-directory blognotedir
            :base-directory "~/blog/notes"
            :base-extension "org\\|md"
