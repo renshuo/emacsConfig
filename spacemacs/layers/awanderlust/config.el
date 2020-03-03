@@ -82,3 +82,11 @@
       '("^Reply-To" "^Posted" "^Date" "^Organization")
       )
 
+;; 过滤邮件
+(setq wl-refile-rule-alist
+      '(("From"
+         ("10000sn@189.cn" . "+陕西电信")
+         ("InfoQ" . "+InfoQ")
+         ))
+      )
+(setq wl-summary-auto-refile-skip-marks nil) ;; 未读邮件也直接refile， 默认值是 ‘N’, ‘U’ and ‘!’
