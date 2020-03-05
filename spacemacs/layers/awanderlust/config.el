@@ -96,6 +96,7 @@
       '(("From"
          ("10000sn@189.cn" . "+陕西电信")
          ("InfoQ" . "+InfoQ")
+         ("cmbchina.com" . "+招商银行")
          ))
       )
 (setq wl-summary-auto-refile-skip-marks nil) ;; 未读邮件也直接refile， 默认值是 ‘N’, ‘U’ and ‘!’
