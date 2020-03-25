@@ -55,9 +55,18 @@
          (wl-smtp-posting-port . 587)
          (wl-local-domain . "qq.com")
          (wl-message-id-domain . "smtp.qq.com"))
+        ("189"
+         ("From" . "18092099708@189.cn")
+         (wl-from . "RenShuo <18092099708@189.cn>")
+         (wl-smtp-posting-user . "18092099708")
+         (Wl-Smtp-Posting-Server . "smtp.189.cn")
+         (wl-smtp-authenticate-type . "plain")
+         (wl-smtp-connection-type . 'starttls)
+         (wl-smtp-posting-port . 25)
+         (wl-local-domain . "189.cn")
+         (wl-message-id-domain . "smtp.189.cn"))
         )
       )
-
 
 ;; 去掉邮件头中的一些不重要信息
 (setq wl-message-ignored-field-list
@@ -94,7 +103,7 @@
          ("ThoughtWorks Webinar" . "+spam/ThoughtWorks")
          ("righere@bos.spdb-card.com" . "+spam/银行")
          ("exert@positive.cebuser.com" . "+spam/银行")
-
+         ("cmbchina.com" . "+spam/银行")
          ))
       )
 (setq wl-summary-auto-refile-skip-marks nil) ;; 未读邮件也直接refile， 默认值是 ‘N’, ‘U’ and ‘!’
