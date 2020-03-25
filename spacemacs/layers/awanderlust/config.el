@@ -82,11 +82,19 @@
       '("^Reply-To" "^Posted" "^Date" "^Organization")
       )
 
-;; 过滤邮件
+;; 过滤邮件 C - o
 (setq wl-refile-rule-alist
       '(("From"
          ("10000sn@189.cn" . "+陕西电信")
          ("InfoQ" . "+InfoQ")
+         ("cmbchina.com" . "+spam/银行")
+         ("招商银行信用卡" . "+spam/银行")
+         ("兴业银联中心" . "+spam/银行")
+         ("交通银行信用卡中心" . "+spam/银行")
+         ("ThoughtWorks Webinar" . "+spam/ThoughtWorks")
+         ("righere@bos.spdb-card.com" . "+spam/银行")
+         ("exert@positive.cebuser.com" . "+spam/银行")
+
          ))
       )
 (setq wl-summary-auto-refile-skip-marks nil) ;; 未读邮件也直接refile， 默认值是 ‘N’, ‘U’ and ‘!’
