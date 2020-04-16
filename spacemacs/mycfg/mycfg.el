@@ -10,5 +10,5 @@
 (require 'emms-cfg)
 (require 'emms-bilibili-cfg)
 (require 'xml-cfg)
-
+(require 'dired-cfg)
 
