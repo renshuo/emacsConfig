@@ -104,6 +104,7 @@
          ("righere@bos.spdb-card.com" . "+spam/银行")
          ("exert@positive.cebuser.com" . "+spam/银行")
          ("cmbchina.com" . "+spam/银行")
+         ("人民网" . "+spam/人民网")
          ))
       )
 (setq wl-summary-auto-refile-skip-marks nil) ;; 未读邮件也直接refile， 默认值是 ‘N’, ‘U’ and ‘!’
