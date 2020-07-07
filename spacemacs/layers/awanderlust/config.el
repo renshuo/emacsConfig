@@ -95,16 +95,29 @@
 (setq wl-refile-rule-alist
       '(("From"
          ("10000sn@189.cn" . "+陕西电信")
+
          ("InfoQ" . "+InfoQ")
+
+         ;; 银行
          ("cmbchina.com" . "+spam/银行")
          ("招商银行信用卡" . "+spam/银行")
          ("兴业银联中心" . "+spam/银行")
          ("交通银行信用卡中心" . "+spam/银行")
-         ("ThoughtWorks Webinar" . "+spam/ThoughtWorks")
+         ("pccc@bocomcc.com" . "+spam/银行")
          ("righere@bos.spdb-card.com" . "+spam/银行")
          ("exert@positive.cebuser.com" . "+spam/银行")
          ("cmbchina.com" . "+spam/银行")
+
+         ;; IT 类邮件
+         ("ThoughtWorks Webinar" . "+spam/ThoughtWorks")
          ("人民网" . "+spam/人民网")
+         ("mathworks@go.mathworks.com" . "+spam/IT")
+         ("MathWorks China" . "+spam/IT")
+
+         ;; for games
+         ("Steam Support" . "+spam/games")
+         ("Bethesda.net" . "+spam/games")
+         ("Nexus Mods" . "+spam/games")
          ))
       )
 (setq wl-summary-auto-refile-skip-marks nil) ;; 未读邮件也直接refile， 默认值是 ‘N’, ‘U’ and ‘!’

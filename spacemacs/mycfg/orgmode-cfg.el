@@ -1,7 +1,10 @@
 ;; ----------------------------- org-mode common
 (provide 'orgmode-cfg)
 ;; agender file
-(setq org-agenda-files (quote ("~/task/work")))
+(setq org-agenda-files (quote (
+                               "~/task/work.org"
+                               "~/task/diary.org"
+                               )))
 
 ;; org-mode export markdown
 (setq org-export-backends '(html icalendar latex md))
