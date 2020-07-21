@@ -9,28 +9,30 @@
 ;; org-mode export markdown
 (setq org-export-backends '(html icalendar latex md))
 
+
 ;; ---------------------------- org for task
-(setq myorgdir "~/task/")
 ;; capture
+(define-key global-map "\C-c c" 'org-capture)
 (setq org-capture-templates
       (quote (
-              ("t" "todo" entry (file (concat myorgdir "/work.org"))
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("t" "工作任务" entry
+               (file+olp "~/task/work.org" "Inbox")
+               "** TODO %U %?\n")
 
-              ("n" "note" entry (file (concat myorgdir "/note.org"))
-               "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("n" "随手记" entry
+               (file  "~/task/note.org")
+               "* %U %? :NOTE:\n")
 
-              ("d" "diary" entry (file (concat myorgdir "/diary.org"))
-               "* %?\n%U\n" :clock-in t :clock-resume t)
+              ("d" "工作日记" entry
+               (file+datetree "~/task/diary.org")
+               "* %U %?\n")
               ))
       )
 
-;;(message (concat orgdir "b"))
 
 ;; ---------------------------- org for diary and blog
 ;; config for org-mode to blog
 ;; (setq blognotedir (concat myblogdir "/notes"))
-(setq myblogdir "~/blog")
 (with-eval-after-load 'org
   (require 'ox-publish)
   (setq org-publish-project-alist
