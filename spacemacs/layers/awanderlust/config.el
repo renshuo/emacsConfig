@@ -95,6 +95,7 @@
 (setq wl-refile-rule-alist
       '(("From"
          ("10000sn@189.cn" . "+陕西电信")
+         ("ctsn10000@189.cn" . "+陕西电信")
 
          ("InfoQ" . "+InfoQ")
 
@@ -107,6 +108,7 @@
          ("righere@bos.spdb-card.com" . "+spam/银行")
          ("exert@positive.cebuser.com" . "+spam/银行")
          ("cmbchina.com" . "+spam/银行")
+         ("光大银行" . "+spam/银行")
 
          ;; IT 类邮件
          ("ThoughtWorks Webinar" . "+spam/ThoughtWorks")
