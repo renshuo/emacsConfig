@@ -1,4 +1,6 @@
 ;; common
+(global-set-key (kbd "C-c w") 'wl)
+
 (setq elmo-maildir-folder-path "~/.Maildir/")
 (setq elmo-localdir-folder-path "~/.Mail/")
 
