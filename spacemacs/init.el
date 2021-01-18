@@ -32,7 +32,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(lua
+   '(octave
+     lua
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -48,6 +49,7 @@ This function should only modify configuration layer settings."
                       better-defaults-move-to-end-of-code-first nil
                       )
 
+     c-c++
      (chinese :variables
               chinese-enable-fcitx t
               chinese-enable-youdao-dict t
@@ -75,6 +77,7 @@ This function should only modify configuration layer settings."
      imenu-list
      (javascript :variables ;; TODO
                  )
+     julia
      latex
      markdown ;; TODO
      multiple-cursors
