@@ -13,3 +13,4 @@
 (require 'dired-cfg)
 (require 'emacs-lisp-config)
 (require 'julia-cfg)
+(require 'npm-cfg)
